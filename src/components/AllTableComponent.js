@@ -1,6 +1,6 @@
 import React from "react";
 import AllTableService from "../services/AllTableService";
-import { useState } from "react";
+
 
 class AllTableComponent extends React.Component {
 
@@ -38,15 +38,15 @@ class AllTableComponent extends React.Component {
                         {
                             this.state.tables.map(
                                 table =>
-                                    (<tr key={table.id}>
-                                        {/* Seperation */}
-                                        <td>{table.id}</td>
-                                        <td>{table.tableNumber}</td>
-                                        <td>{table.inUse ? "true": "false"}</td>
-                                        <td>{table.inUseStartTime ? table.inUseStartTime: "null"}</td>
-                                        <td>{table.reservations}</td>
+                                (<tr key={table.id}>
+                                    {/* Seperation */}
+                                    <td>{table.id}</td>
+                                    <td>{table.tableNumber}</td>
+                                    <td>{table.inUse ? "true" : "false"}</td>
+                                    <td>{table.inUseStartTime ? table.inUseStartTime : "null"}</td>
+                                    <td>{table.reservations}</td>
 
-                                    </tr>)
+                                </tr>)
                             )
                         }
                     </tbody>
@@ -55,7 +55,7 @@ class AllTableComponent extends React.Component {
         )
     }
 
-    
+
 
 }
 // const tables =
