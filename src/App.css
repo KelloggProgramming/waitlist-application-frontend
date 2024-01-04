@@ -36,3 +36,50 @@
     transform: rotate(360deg);
   }
 }
+
+
+.table-card {
+  padding: 0 5px 5px 5px;
+  /*max-width: 150px;*/
+  /*max-height: 250px;*/
+  /*border: 1px solid #9E9E9E;*/
+  /*border-radius: 10px;*/
+}
+
+.table-card-header-number {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.table-card-footer div:nth-last-child(n){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table-card-footer div:nth-last-child(n) svg{
+  margin-right: 3px;
+}
+
+.table-card-footer div:nth-last-child(-n+2) {
+  border-left: 1px solid black;
+}
+
+.card-title .container-fluid {
+  /*background-color: black;*/
+  justify-content: space-between;
+}
+
+.card-seat-num {
+  font-size: 15px;
+  text-align: end;
+}
+
+.table-card-status {
+  text-align: center;
+  font-weight: bold;
+}
+
+.card-title {
+  border-bottom: 1px solid #282c34;
+}

@@ -20,7 +20,6 @@ class AllTableComponent extends React.Component {
 
     render() {
         // console.log(tables[0].inUse);
-        console.log(this.state);
         return (
             <div>
                 <h1 className="text-center">Tables List</h1>
