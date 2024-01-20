@@ -1,94 +1,98 @@
+.body {
+    background-color: #6c2c87;
+}
+
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  height: 40vmin;
-  pointer-events: none;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
 .table-card {
-  padding: 0 5px 5px 5px;
-  margin: auto;
-  /*max-width: 150px;*/
-  /*max-height: 250px;*/
-  /*border: 1px solid #9E9E9E;*/
-  /*border-radius: 10px;*/
+    padding: 0 5px 5px 5px;
+    margin: auto;
+    /*max-width: 150px;*/
+    /*max-height: 250px;*/
+    /*border: 1px solid #9E9E9E;*/
+    /*border-radius: 10px;*/
 }
 
 .table-card-header-number {
-  font-size: 40px;
-  font-weight: 500;
+    font-size: 40px;
+    font-weight: 500;
 }
 
-.table-card-footer div:nth-last-child(n){
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.table-card-footer div:nth-last-child(n) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.table-card-footer div:nth-last-child(n) svg{
-  margin-right: 3px;
+.table-card-footer div:nth-last-child(n) svg {
+    margin-right: 3px;
 }
 
-.table-card-footer div:nth-last-child(-n+2) {
-  border-left: 1px solid black;
+.table-card-footer div:nth-last-child(-n+1) {
+    border-left: 1px solid black;
 }
 
 .card-title .container-fluid {
-  /*background-color: black;*/
-  justify-content: space-between;
+    /*background-color: black;*/
+    justify-content: space-between;
 }
 
 .card-seat-num {
-  font-size: 15px;
-  text-align: end;
+    font-size: 15px;
+    text-align: end;
 }
 
 .table-card-status {
-  text-align: center;
-  font-weight: bold;
+    text-align: center;
+    font-weight: bold;
 }
 
 .card-title {
-  border-bottom: 1px solid #282c34;
+    border-bottom: 1px solid #282c34;
 }
 
-.tables-grid{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px 20px;
-  /*margin-top: 15px;*/
+.tables-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 20px;
+    /*margin-top: 15px;*/
 }

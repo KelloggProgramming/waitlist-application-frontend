@@ -8,10 +8,14 @@ export default function TableCardGrid(props) {
     const tables = props.tables;
     const refreshHook = props.refreshHook;
 
-    return (
-        // <Container className="tables-grid">
-        //     <div className="tables-grid">
-        <Grid2 container spacing={2} columns={{xs:6, sm:12, md:10}}>
+    const errorMessage = () => {
+        return (<p>No tables to display</p>);
+    }
+
+    //TODO Check is tables is null
+    const tableGrid = () => {
+        return (
+            <Grid2 container spacing={2} columns={{xs: 6, sm: 12, md: 10}}>
                 {tables && tables.map(
                     table => (
                         // <Col xs={3} className="table-item" >
@@ -22,6 +26,13 @@ export default function TableCardGrid(props) {
                     )
                 )}
             </Grid2>
-        // </Container>
+        );
+    }
+
+
+    return (
+        <>
+            {tables.length === 0 ? errorMessage() : tableGrid()}
+        </>
     );
 }

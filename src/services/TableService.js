@@ -11,6 +11,11 @@ class TableService {
         const setTableStatusUrl = API_URL + "/tables/" + tableId + "/status/" + status
         return fetch(setTableStatusUrl, {method: "PUT"})
     }
+
+    getTableTypes() {
+        const ALL_TABLES_TYPES_API_URL = '/tables/types';
+        return fetch(API_URL + ALL_TABLES_TYPES_API_URL);
+    }
 }
 
 export default new TableService();
