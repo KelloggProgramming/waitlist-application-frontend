@@ -40,6 +40,7 @@
 
 .table-card {
   padding: 0 5px 5px 5px;
+  margin: auto;
   /*max-width: 150px;*/
   /*max-height: 250px;*/
   /*border: 1px solid #9E9E9E;*/
@@ -82,4 +83,12 @@
 
 .card-title {
   border-bottom: 1px solid #282c34;
+}
+
+.tables-grid{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 20px;
+  /*margin-top: 15px;*/
 }

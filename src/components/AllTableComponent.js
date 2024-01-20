@@ -1,5 +1,5 @@
 import React from "react";
-import AllTableService from "../services/AllTableService";
+import AllTableService from "../services/TableService";
 
 
 class AllTableComponent extends React.Component {
