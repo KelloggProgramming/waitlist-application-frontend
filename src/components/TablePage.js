@@ -37,16 +37,14 @@ export default function TablePage() {
     }, []);
 
     const filterTables = () => {
-        if(!selectedTableTypeId) {
+        if (!selectedTableTypeId) {
             return tables;
-        }else {
+        } else {
             return tables?.filter(table => {
-                return table.tableType.id == selectedTableTypeId
+                return table.tableType.id === selectedTableTypeId
             })
         }
     }
-
-    console.log("func: ", filterTables())
 
     return (
         <>
@@ -55,7 +53,8 @@ export default function TablePage() {
                     <Button onClick={() => setSelectedTableTypeId(null)}>reset</Button>
                     {tableTypes.map(tableType => {
                         return (
-                            <Button onClick={() => setSelectedTableTypeId(tableType.id)}>{tableType.name}</Button>
+                            <Button key={tableType.id}
+                                    onClick={() => setSelectedTableTypeId(tableType.id)}>{tableType.name}</Button>
                         );
                     })}
                 </ButtonGroup>

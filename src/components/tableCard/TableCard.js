@@ -10,10 +10,12 @@ import PersonIcon from '@mui/icons-material/Person';
 import LockClockIcon from '@mui/icons-material/LockClock';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
+import DangerousIcon from '@mui/icons-material/Dangerous';
+import {TableStatus} from "../TableStatus";
+import {calculateElapsedTimeFormatted} from "../../utilities/TimeUtilities";
 
 
 export default function TableCard({table, refreshHook}) {
-
     const [elapsedTime, setElapsedTime] = useState("--:--")
     const [open, setOpen] = useState(false)
 
@@ -41,10 +43,9 @@ export default function TableCard({table, refreshHook}) {
             case 'RESERVED':
                 return <StatusIconWrapper IconComponent={LockClockIcon}/>;
             case 'UNKNOWN':
-                return 'purple';
+                return <StatusIconWrapper IconComponent={DangerousIcon}/>;
             default:
-                return 'grey';
-
+                return '';
         }
     }
 
@@ -53,19 +54,11 @@ export default function TableCard({table, refreshHook}) {
     }
 
     const getStatusBackgroundColor = (status) => {
-        switch (status) {
-            case 'AVAILABLE':
-                return '#b5ffc7';
-            case 'RESERVED':
-                return '#eab896';
-            case 'UNKNOWN':
-                return 'purple';
-            default:
-                return 'grey';
-        }
+        let color = TableStatus.find(tableStatus => tableStatus.name === status)
+        return color.backgroundColor;
     }
 
-    useInterval(() => setElapsedTime(calcElapsed(table.statusUpdated)), 1000);
+    useInterval(() => setElapsedTime(calculateElapsedTimeFormatted(table.statusUpdated)), 1000);
 
     //TODO:
     // if (table === undefined)
@@ -83,31 +76,6 @@ export default function TableCard({table, refreshHook}) {
     }
 
     const numOfSeatsDisplay = (table.numberOfSeats > 0) ? table.numberOfSeats : table.tableType.numberOfSeats
-
-    const padZero = (nbr) => {
-        return ("0" + nbr).slice(-2);
-    }
-
-    const calcElapsed = (dateTime) => {
-        //TODO: make API return TZ offset
-        //TODO ERROR HANDLE
-        let elapsedSeconds = Math.ceil((Date.now() - new Date(dateTime + "+00:00")) / 1000);
-
-        if (elapsedSeconds >= 3600) {
-            let hours = Math.floor(elapsedSeconds / 3600);
-            let minutes = Math.floor((elapsedSeconds % 3600) / 60);
-            let seconds = Math.floor(elapsedSeconds % 60);
-
-            return padZero(hours) + ":" + padZero(minutes) + ":" + padZero(seconds);
-        } else if (elapsedSeconds >= 60) {
-            let minutes = Math.floor(elapsedSeconds / 60);
-            let seconds = elapsedSeconds % 60;
-
-            return padZero(minutes) + ":" + padZero(seconds);
-        } else if (elapsedSeconds < 60) {
-            return "00:" + padZero(elapsedSeconds);
-        }
-    }
 
     return (
         <>

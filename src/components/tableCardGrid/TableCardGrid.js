@@ -1,7 +1,4 @@
-import Row from "react-bootstrap/Row";
 import TableCard from "../tableCard/TableCard";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
 import Grid2 from "@mui/material/Unstable_Grid2";
 
 export default function TableCardGrid(props) {
@@ -20,7 +17,7 @@ export default function TableCardGrid(props) {
                     table => (
                         // <Col xs={3} className="table-item" >
                         // <div className="table-item" >
-                        <Grid2 xs={3} sm={3} md={2}>
+                        <Grid2 key={table.id} xs={3} sm={3} md={2}>
                             <TableCard key={table.tableNumber} table={table} refreshHook={refreshHook}/>
                         </Grid2>
                     )
