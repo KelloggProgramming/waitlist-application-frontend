@@ -1,12 +1,12 @@
 import {Card, CardContent, Typography} from "@mui/material";
 import {CardTitle} from "react-bootstrap";
-import PersonIcon from '@mui/icons-material/Person';
 import Grid from "@mui/material/Unstable_Grid2";
 import TableService from "../../services/TableService";
-import useInterval from "../../services/UseInterval";
+import useInterval from "../../utilities/UseInterval";
 import {useState} from "react";
 import TableDialog from "../TableDialog";
 
+import PersonIcon from '@mui/icons-material/Person';
 import LockClockIcon from '@mui/icons-material/LockClock';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
@@ -49,25 +49,10 @@ export default function TableCard({table, refreshHook}) {
     }
 
     const getStatusColor = (status) => {
-        return "black"
-        switch (status) {
-            case 'AVAILABLE':
-                return 'green';
-            case 'INUSE':
-                return 'black';
-            case 'RESERVED':
-                return '#e25f00';
-            case 'UNKNOWN':
-                return 'purple';
-            default:
-                return 'grey';
-        }
-
         return "black";
     }
 
     const getStatusBackgroundColor = (status) => {
-        // return "white"
         switch (status) {
             case 'AVAILABLE':
                 return '#b5ffc7';
@@ -78,8 +63,6 @@ export default function TableCard({table, refreshHook}) {
             default:
                 return 'grey';
         }
-
-        return "black";
     }
 
     useInterval(() => setElapsedTime(calcElapsed(table.statusUpdated)), 1000);
