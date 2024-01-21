@@ -15,8 +15,6 @@ export default function TableCardGrid(props) {
             <Grid2 container spacing={2} columns={{xs: 6, sm: 12, md: 10}}>
                 {tables && tables.map(
                     table => (
-                        // <Col xs={3} className="table-item" >
-                        // <div className="table-item" >
                         <Grid2 key={table.id} xs={3} sm={3} md={2}>
                             <TableCard key={table.tableNumber} table={table} refreshHook={refreshHook}/>
                         </Grid2>

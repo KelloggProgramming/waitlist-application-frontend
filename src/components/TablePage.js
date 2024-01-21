@@ -5,7 +5,6 @@ import {Navbar} from "react-bootstrap";
 import {Button, ButtonGroup} from "@mui/material";
 
 export default function TablePage() {
-
     const [tables, setTables] = useState([]);
     const [tableTypes, setTableTypes] = useState([]);
     const [selectedTableTypeId, setSelectedTableTypeId] = useState(null);
@@ -16,7 +15,6 @@ export default function TablePage() {
             .then(jsonTables => {
                 jsonTables.sort((a, b) => a.tableNumber > b.tableNumber)
                 setTables(jsonTables)
-                console.log("Setting Tables")
             })
     }
 
@@ -24,9 +22,7 @@ export default function TablePage() {
         TableService.getTableTypes()
             .then(res => res.json())
             .then(jsonTableTypes => {
-                // jsonTableTypes.sort((a, b) => a.tableNumber > b.tableNumber)
                 setTableTypes(jsonTableTypes)
-                console.log("Setting Table Types")
             })
     }
 
@@ -46,18 +42,30 @@ export default function TablePage() {
         }
     }
 
-    return (
-        <>
-            <Navbar>
+    const filterButtons = () => {
+        if (tableTypes && tableTypes.length > 0) {
+            return (
                 <ButtonGroup variant="outlined" aria-label="outlined button group">
-                    <Button onClick={() => setSelectedTableTypeId(null)}>reset</Button>
+                    <Button key={0} onClick={() => setSelectedTableTypeId(null)}>reset</Button>
                     {tableTypes.map(tableType => {
                         return (
                             <Button key={tableType.id}
-                                    onClick={() => setSelectedTableTypeId(tableType.id)}>{tableType.name}</Button>
+                                    onClick={() => setSelectedTableTypeId(tableType.id)}
+                            >{tableType.name}</Button>
                         );
                     })}
                 </ButtonGroup>
+            );
+        } else {
+            return null;
+        }
+    }
+
+    return (
+        <>
+            <Navbar>
+
+                {filterButtons()}
             </Navbar>
             <TableCardGrid tables={filterTables()} refreshHook={updateTablesList}/>
         </>

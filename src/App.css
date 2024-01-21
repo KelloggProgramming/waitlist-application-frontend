@@ -1,5 +1,14 @@
-.body {
-    background-color: #6c2c87;
+body, html {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-image: url("../public/Belle-Epoque-Logo.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    /*TODO Do not do this.*/
+    overflow: hidden;
 }
 
 .App {
