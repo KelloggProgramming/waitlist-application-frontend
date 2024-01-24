@@ -42,13 +42,14 @@ body, html {
 
 .table-dialog-status-buttons {
     width: 150px;
+    color: black;
 }
 
 .table-dialog-quick-action {
     /*height: 150px;*/
     /*width: 150px;*/
     height: 100%;
-    width: 100%;
+    width: 85%;
 }
 
 .table-dialog-div {

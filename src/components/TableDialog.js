@@ -99,10 +99,10 @@ export default function TableDialog(props) {
                     </Grid2>
 
                     <Grid2 xs={12} container className={"table-dialog-buttons"}>
-                        <Grid2 container xs={6} spacing={1} justifyContent={"center"} direction={"column"}>
+                        <Grid2 container xs={5} spacing={1} justifyContent={"center"} direction={"column"}>
                             {statusButtons()}
                         </Grid2>
-                        <Grid2 xs={6}>
+                        <Grid2 xs={7} style={{"borderLeft": "2px solid #8a38ad"}}>
                             {quickActionButton()}
                         </Grid2>
                     </Grid2>
