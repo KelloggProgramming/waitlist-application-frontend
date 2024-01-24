@@ -1,63 +1,73 @@
 body, html {
-    width: 100%;
-    height: 100%;
     text-align: center;
+}
+
+.background {
+    background-color: black;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+
     background-image: url("../public/Belle-Epoque-Logo.png");
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
-    
-    /*TODO Do not do this.*/
     overflow: hidden;
+}
+
+.table-dialog-close {
+    display: inline;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    right: 0;
+    top: 0;
+}
+
+.table-dialog-close button {
+    height: 50px;
+    width: 50px;
+    color: #8a38ad;
+}
+
+.table-dialog-info {
+    height: 200px;
+    text-align: center;
+    border-bottom: 1px solid #f58f4e;
+}
+
+.table-dialog-buttons {
+}
+
+.table-dialog-status-buttons {
+    width: 150px;
+}
+
+.table-dialog-quick-action {
+    /*height: 150px;*/
+    /*width: 150px;*/
+    height: 100%;
+    width: 100%;
+}
+
+.table-dialog-div {
+    height: 400px;
+    width: 500px;
+    padding: 20px;
+    background-color: rgba(40, 44, 52, 0.11);
 }
 
 .App {
     text-align: center;
-}
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+    /*TODO Do not do this.*/
+    width: 99%;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
-}
-
-.App-link {
-    color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 
 .table-card {
     padding: 0 5px 5px 5px;
     margin: auto;
-    /*max-width: 150px;*/
-    /*max-height: 250px;*/
-    /*border: 1px solid #9E9E9E;*/
-    /*border-radius: 10px;*/
 }
 
 .table-card-header-number {

@@ -1,7 +1,6 @@
 import TableCardGrid from "./tableCardGrid/TableCardGrid";
 import {useEffect, useState} from "react";
 import TableService from "../services/TableService";
-import {Navbar} from "react-bootstrap";
 import {Button, ButtonGroup} from "@mui/material";
 
 export default function TablePage() {
@@ -63,10 +62,7 @@ export default function TablePage() {
 
     return (
         <>
-            <Navbar>
-
-                {filterButtons()}
-            </Navbar>
+            {filterButtons()}
             <TableCardGrid tables={filterTables()} refreshHook={updateTablesList}/>
         </>
     );

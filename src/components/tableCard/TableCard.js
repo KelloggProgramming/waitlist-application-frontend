@@ -1,5 +1,4 @@
 import {Card, CardContent, Typography} from "@mui/material";
-import {CardTitle} from "react-bootstrap";
 import Grid from "@mui/material/Unstable_Grid2";
 import TableService from "../../services/TableService";
 import useInterval from "../../utilities/UseInterval";
@@ -11,7 +10,7 @@ import LockClockIcon from '@mui/icons-material/LockClock';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import DangerousIcon from '@mui/icons-material/Dangerous';
-import {TableStatus} from "../TableStatus";
+import {TableStatus} from "../../constants/TableStatus";
 import {calculateElapsedTimeFormatted} from "../../utilities/TimeUtilities";
 
 
@@ -26,7 +25,6 @@ export default function TableCard({table, refreshHook}) {
     const handleDialogClose = (status) => {
         setOpen(false);
         changeTableStatus(status);
-        console.log("table " + table.tableNumber + " updated to " + status);
     }
 
     const StatusIconWrapper = (props) => {
@@ -54,7 +52,7 @@ export default function TableCard({table, refreshHook}) {
     }
 
     const getStatusBackgroundColor = (status) => {
-        let color = TableStatus.find(tableStatus => tableStatus.name === status)
+        let color = Object.values(TableStatus).find(tableStatus => tableStatus.name === status)
         return color.backgroundColor;
     }
 
@@ -69,7 +67,11 @@ export default function TableCard({table, refreshHook}) {
         //TODO Validation that passed in is a valid status
         if (status) {
             TableService.updateStatus(table.id, status).then(res => {
-                console.log("finished request")
+                if (res.status !== 200) {
+                    console.log("Error setting table " + table.tableNumber + " to " + status)
+                } else {
+                    console.log("table " + table.tableNumber + " updated to " + status);
+                }
                 refreshHook();
             });
         }
@@ -85,15 +87,13 @@ export default function TableCard({table, refreshHook}) {
                 style={{backgroundColor: getStatusBackgroundColor(table.status)}}
                 className="table-card"
             >
-                <CardTitle>
-                    <Typography
-                        style={{color: getStatusColor(table.status), fontWeight: 500}}
-                        align="center"
-                        variant="h5"
-                    >
-                        {elapsedTime}
-                    </Typography>
-                </CardTitle>
+                <Typography
+                    style={{color: getStatusColor(table.status), fontWeight: 500}}
+                    align="center"
+                    variant="h5"
+                >
+                    {elapsedTime}
+                </Typography>
 
                 <CardContent>
                     <Typography align="center" variant="h3">
@@ -109,7 +109,7 @@ export default function TableCard({table, refreshHook}) {
                     <Grid xs={4}><PersonIcon fontSize="small"/> {numOfSeatsDisplay}</Grid>
                 </Grid>
             </Card>
-            <TableDialog open={open} onClose={handleDialogClose}/>
+            <TableDialog open={open} table={table} onClose={handleDialogClose}/>
         </>
     );
 }
