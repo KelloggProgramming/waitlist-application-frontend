@@ -1,5 +1,6 @@
 body, html {
     text-align: center;
+    color: black;
 }
 
 .background {
@@ -14,6 +15,21 @@ body, html {
     background-repeat: no-repeat;
     background-position: center;
     overflow: hidden;
+}
+
+.menu-bar {
+    color: white;
+    height: 50px;
+    /*background-color: white;*/
+    border-bottom: 1px white solid;
+    /*padding-bottom: 15px;*/
+    margin-bottom: 15px;
+}
+
+.filter-chip {
+    margin-left: 10px;
+    /*Doesn't work*/
+    color: white;
 }
 
 .table-dialog-close {

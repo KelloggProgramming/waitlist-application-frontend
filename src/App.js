@@ -18,7 +18,8 @@ function App() {
             },
             background: {
                 default: "black"
-            }
+            },
+            mode: "dark"
         }
     })
     return (

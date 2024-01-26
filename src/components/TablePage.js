@@ -1,7 +1,7 @@
 import TableCardGrid from "./tableCardGrid/TableCardGrid";
 import {useEffect, useState} from "react";
 import TableService from "../services/TableService";
-import {Button, ButtonGroup} from "@mui/material";
+import {Button, ButtonGroup, Chip} from "@mui/material";
 
 export default function TablePage() {
     const [tables, setTables] = useState([]);
@@ -60,9 +60,38 @@ export default function TablePage() {
         }
     }
 
+    const filterChips = () => {
+        if (tableTypes && tableTypes.length > 0) {
+            const resetType = {
+                id: null,
+                name: "Reset",
+            };
+
+            const modifiedTypesList = [resetType, ...tableTypes];
+
+            return modifiedTypesList.map(tableType => (
+                    <Chip
+                        key={tableType.id}
+                        label={tableType.name}
+                        onClick={() => setSelectedTableTypeId(tableType.id)}
+                        variant={tableType.id === selectedTableTypeId ? "filled" : "outlined"}
+                        className={"filter-chip"}
+                        style={{
+                            "marginLeft": "15px"
+                        }}
+                    >{tableType.name}</Chip>
+                )
+            );
+        } else {
+            return null;
+        }
+    }
+
     return (
         <>
-            {filterButtons()}
+            <div className={"menu-bar"}>
+                {filterChips()}
+            </div>
             <TableCardGrid tables={filterTables()} refreshHook={updateTablesList}/>
         </>
     );
