@@ -10,6 +10,7 @@ export default function TableDialog(props) {
         AVAILABLE: "INUSE",
         RESERVED: "INUSE",
         INUSE: "AVAILABLE",
+        UNKNOWN: "UNKNOWN"
     }
 
     const handleClose = () => {
@@ -44,18 +45,30 @@ export default function TableDialog(props) {
 
     const quickActionButton = () => {
         const quickActionName = quickActionDefinition[table.status];
-
+        
         const quickActionTableStatus = TableStatus[quickActionName];
         // const quickActionTableStatus = TableStatus.find(tableStatus => tableStatus.name === quickActionName)
 
-        return (<Button
-            variant={"contained"}
-            size={"large"}
-            className={"table-dialog-quick-action"}
-            style={{"backgroundColor": quickActionTableStatus.buttonColor}}
-            // color="available"
-            onClick={() => handleButtonClick(quickActionTableStatus.name)}
-        >{quickActionTableStatus.displayName}</Button>);
+        if (quickActionTableStatus === undefined) {
+            return (<Button
+                    disabled
+                    variant={"contained"}
+                    size={"large"}
+                    className={"table-dialog-quick-action"}
+                >Unavailable</Button>
+            );
+        } else {
+            return (<Button
+                    variant={"contained"}
+                    size={"large"}
+                    className={"table-dialog-quick-action"}
+                    style={{"backgroundColor": quickActionTableStatus.buttonColor}}
+                    // color="available"
+                    onClick={() => handleButtonClick(quickActionTableStatus.name)}
+                >{quickActionTableStatus.displayName}</Button>
+            );
+        }
+
     }
 
     const nextReservation = () => {
