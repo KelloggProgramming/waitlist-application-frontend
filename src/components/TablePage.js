@@ -77,7 +77,8 @@ export default function TablePage() {
                         variant={tableType.id === selectedTableTypeId ? "filled" : "outlined"}
                         className={"filter-chip"}
                         style={{
-                            "marginLeft": "15px"
+                            "marginLeft": "15px",
+                            "color": "white"
                         }}
                     >{tableType.name}</Chip>
                 )
