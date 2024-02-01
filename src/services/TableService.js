@@ -1,4 +1,6 @@
-const API_URL = 'http://192.168.0.202:7363';
+const API_URL = 'https://cafebelleepoque.com/api';
+
+// const API_URL = 'http://192.168.0.202:7363/api';
 
 class TableService {
 
