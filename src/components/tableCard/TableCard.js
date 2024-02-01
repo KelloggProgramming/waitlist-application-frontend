@@ -48,7 +48,11 @@ export default function TableCard({table, refreshHook}) {
     }
 
     const getStatusColor = (status) => {
-        return "black";
+        switch (status) {
+            default:
+                return "black";
+
+        }
     }
 
     const getStatusBackgroundColor = (status) => {

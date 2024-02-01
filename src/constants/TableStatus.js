@@ -6,15 +6,17 @@ export const TableStatus = {
     'AVAILABLE': {
         name: 'AVAILABLE',
         displayName: 'Available',
+        // backgroundColor: 'white',
         backgroundColor: '#b5ffc7',
-        buttonColor: 'rgb(0,141,28)',
+        buttonColor: '#26e04e',
+        // buttonColor: 'rgb(0,141,28)',
         accessible: true
     },
     'INUSE': {
         name: 'INUSE',
         displayName: 'In-use',
-        backgroundColor: 'grey',
-        buttonColor: 'grey',
+        backgroundColor: '#ff4a4a',
+        buttonColor: '#ff4a4a',
         accessible: true
     },
     'RESERVED': {

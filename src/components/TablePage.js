@@ -2,6 +2,7 @@ import TableCardGrid from "./tableCardGrid/TableCardGrid";
 import {useEffect, useState} from "react";
 import TableService from "../services/TableService";
 import {Button, ButtonGroup, Chip} from "@mui/material";
+import useInterval from "../utilities/UseInterval";
 
 export default function TablePage() {
     const [tables, setTables] = useState([]);
@@ -30,6 +31,8 @@ export default function TablePage() {
         updateTablesList();
         updateTablesTypesList();
     }, []);
+
+    useInterval(() => updateTablesList(), 1000);
 
     const filterTables = () => {
         if (!selectedTableTypeId) {
