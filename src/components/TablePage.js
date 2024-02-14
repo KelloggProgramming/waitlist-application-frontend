@@ -1,13 +1,18 @@
 import TableCardGrid from "./tableCardGrid/TableCardGrid";
 import {useEffect, useState} from "react";
 import TableService from "../services/TableService";
-import {Button, ButtonGroup, Chip} from "@mui/material";
+import {Chip} from "@mui/material";
 import useInterval from "../utilities/UseInterval";
+import {disconnected} from "../services/apiSlice";
+import NavBar from "./NavBar";
+import {useDispatch} from "react-redux";
 
 export default function TablePage() {
     const [tables, setTables] = useState([]);
     const [tableTypes, setTableTypes] = useState([]);
     const [selectedTableTypeId, setSelectedTableTypeId] = useState(null);
+
+    const dispatch = useDispatch();
 
     const updateTablesList = () => {
         TableService.getTables()
@@ -15,7 +20,10 @@ export default function TablePage() {
             .then(jsonTables => {
                 jsonTables.sort((a, b) => a.tableNumber > b.tableNumber)
                 setTables(jsonTables)
-            })
+            }).catch(err => {
+            console.log("Error refreshing tables")
+            dispatch(disconnected())
+        })
     }
 
     const updateTablesTypesList = () => {
@@ -32,7 +40,7 @@ export default function TablePage() {
         updateTablesTypesList();
     }, []);
 
-    useInterval(() => updateTablesList(), 1000);
+    useInterval(() => updateTablesList(), 5000);
 
     const filterTables = () => {
         if (!selectedTableTypeId) {
@@ -41,25 +49,6 @@ export default function TablePage() {
             return tables?.filter(table => {
                 return table.tableType.id === selectedTableTypeId
             })
-        }
-    }
-
-    const filterButtons = () => {
-        if (tableTypes && tableTypes.length > 0) {
-            return (
-                <ButtonGroup variant="outlined" aria-label="outlined button group">
-                    <Button key={0} onClick={() => setSelectedTableTypeId(null)}>reset</Button>
-                    {tableTypes.map(tableType => {
-                        return (
-                            <Button key={tableType.id}
-                                    onClick={() => setSelectedTableTypeId(tableType.id)}
-                            >{tableType.name}</Button>
-                        );
-                    })}
-                </ButtonGroup>
-            );
-        } else {
-            return null;
         }
     }
 
@@ -83,7 +72,7 @@ export default function TablePage() {
                             "marginLeft": "15px",
                             "color": "white"
                         }}
-                    >{tableType.name}</Chip>
+                    />
                 )
             );
         } else {
@@ -91,11 +80,10 @@ export default function TablePage() {
         }
     }
 
+
     return (
         <>
-            <div className={"menu-bar"}>
-                {filterChips()}
-            </div>
+            <NavBar pageContent={filterChips}/>
             <TableCardGrid tables={filterTables()} refreshHook={updateTablesList}/>
         </>
     );

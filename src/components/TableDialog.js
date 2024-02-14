@@ -1,10 +1,14 @@
 import Dialog from "@mui/material/Dialog";
-import {Button, IconButton, Typography} from "@mui/material";
+import {Button, IconButton, LinearProgress, Typography} from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
 import {TableStatus} from "../constants/TableStatus";
+import {useState} from "react";
+import TableService from "../services/TableService";
 
 export default function TableDialog(props) {
-    const {onClose, table, open} = props;
+    const {onClose, table, open, refreshHook} = props;
+
+    const [isLoading, setLoading] = useState(false);
 
     const quickActionDefinition = {
         AVAILABLE: "INUSE",
@@ -14,22 +18,40 @@ export default function TableDialog(props) {
     }
 
     const handleClose = () => {
-        onClose(null);
+        onClose();
+    }
+
+    const changeTableStatus = (status) => {
+        // let newStatus = table.status === "AVAILABLE" ? "INUSE" : "AVAILABLE";
+        //TODO Validation that passed in is a valid status
+        if (status) {
+            TableService.updateStatus(table.id, status).then(res => {
+                if (res.status !== 200) {
+                    console.log("Error setting table " + table.tableNumber + " to " + status)
+                } else {
+                    console.log("table " + table.tableNumber + " updated to " + status);
+                }
+                refreshHook();
+                setLoading(false);
+                onClose();
+            });
+        }
     }
 
     const handleButtonClick = (status) => {
-        onClose(status);
+        setLoading(true);
+        changeTableStatus(status);
     }
 
     const statusButtons = () => {
-
         return Object.values(TableStatus)
             .filter(tableStatus => tableStatus.accessible)
             .map(tableStatus => {
                 return (
-                    <Grid2 key={tableStatus.id}>
+                    <Grid2 key={tableStatus.name}>
                         <Button
-                            key={tableStatus.id}
+                            key={tableStatus.name}
+                            disabled={isLoading}
                             variant={"contained"}
                             size={"large"}
                             className={"table-dialog-status-buttons"}
@@ -45,7 +67,7 @@ export default function TableDialog(props) {
 
     const quickActionButton = () => {
         const quickActionName = quickActionDefinition[table.status];
-        
+
         const quickActionTableStatus = TableStatus[quickActionName];
         // const quickActionTableStatus = TableStatus.find(tableStatus => tableStatus.name === quickActionName)
 
@@ -61,6 +83,7 @@ export default function TableDialog(props) {
             return (<Button
                     variant={"contained"}
                     size={"large"}
+                    disabled={isLoading}
                     className={"table-dialog-quick-action"}
                     style={{"backgroundColor": quickActionTableStatus.buttonColor}}
                     // color="available"
@@ -110,7 +133,7 @@ export default function TableDialog(props) {
                             </div>
                         </div>
                     </Grid2>
-
+                    {isLoading && <LinearProgress color="secondary"/>}
                     <Grid2 xs={12} container className={"table-dialog-buttons"}>
                         <Grid2 container xs={5} spacing={1} justifyContent={"center"} direction={"column"}>
                             {statusButtons()}
@@ -121,6 +144,7 @@ export default function TableDialog(props) {
                     </Grid2>
                 </Grid2>
             </div>
+
         </Dialog>
     )
         ;

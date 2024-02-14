@@ -1,6 +1,5 @@
 import {Card, CardContent, Typography} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
-import TableService from "../../services/TableService";
 import useInterval from "../../utilities/UseInterval";
 import {useState} from "react";
 import TableDialog from "../TableDialog";
@@ -22,9 +21,8 @@ export default function TableCard({table, refreshHook}) {
         setOpen(true);
     }
 
-    const handleDialogClose = (status) => {
+    const handleDialogClose = () => {
         setOpen(false);
-        changeTableStatus(status);
     }
 
     const StatusIconWrapper = (props) => {
@@ -66,20 +64,6 @@ export default function TableCard({table, refreshHook}) {
     // if (table === undefined)
     //     return "Whoops!";
 
-    const changeTableStatus = (status) => {
-        // let newStatus = table.status === "AVAILABLE" ? "INUSE" : "AVAILABLE";
-        //TODO Validation that passed in is a valid status
-        if (status) {
-            TableService.updateStatus(table.id, status).then(res => {
-                if (res.status !== 200) {
-                    console.log("Error setting table " + table.tableNumber + " to " + status)
-                } else {
-                    console.log("table " + table.tableNumber + " updated to " + status);
-                }
-                refreshHook();
-            });
-        }
-    }
 
     const numOfSeatsDisplay = (table.numberOfSeats > 0) ? table.numberOfSeats : table.tableType.numberOfSeats
 
@@ -113,7 +97,7 @@ export default function TableCard({table, refreshHook}) {
                     <Grid xs={4}><PersonIcon fontSize="small"/> {numOfSeatsDisplay}</Grid>
                 </Grid>
             </Card>
-            <TableDialog open={open} table={table} onClose={handleDialogClose}/>
+            <TableDialog open={open} table={table} onClose={handleDialogClose} refreshHook={refreshHook}/>
         </>
     );
 }

@@ -1,6 +1,10 @@
 export function calculateElapsedTimeFormatted(dateTime) {
     //TODO: make API return TZ offset
     //TODO ERROR HANDLE
+    if (dateTime === null) {
+        return "--:--"
+    }
+
     let elapsedSeconds = Math.ceil((Date.now() - new Date(dateTime + "+00:00")) / 1000);
 
     if (elapsedSeconds >= 3600) {

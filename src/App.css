@@ -17,13 +17,20 @@ body, html {
     overflow: hidden;
 }
 
-.menu-bar {
+.nav-bar {
     color: white;
     height: 50px;
     /*background-color: white;*/
     border-bottom: 1px white solid;
     /*padding-bottom: 15px;*/
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-bar-status-section {
+    justify-self: end;
 }
 
 .filter-chip {
