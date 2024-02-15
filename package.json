@@ -2,14 +2,21 @@
   "name": "waitlist-project-frontend-react",
   "version": "0.1.0",
   "private": true,
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "7.21.0-placeholder-for-preset-env.2"
+  },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.1",
+    "@mui/material": "^5.15.1",
+    "@reduxjs/toolkit": "^2.1.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "bootstrap": "^5.3.2",
     "react": "^18.2.0",
-    "react-bootstrap": "^2.9.1",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },

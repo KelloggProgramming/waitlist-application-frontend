@@ -1,38 +1,141 @@
+body, html {
+    text-align: center;
+    color: black;
+}
+
+.background {
+    background-color: black;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+
+    background-image: url("../public/Belle-Epoque-Logo.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+}
+
+.nav-bar {
+    color: white;
+    height: 50px;
+    /*background-color: white;*/
+    border-bottom: 1px white solid;
+    /*padding-bottom: 15px;*/
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-bar-status-section {
+    justify-self: end;
+}
+
+.filter-chip {
+    margin-left: 10px;
+    /*Doesn't work*/
+    color: white;
+}
+
+.table-dialog-close {
+    display: inline;
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    right: 0;
+    top: 0;
+}
+
+.table-dialog-close button {
+    height: 50px;
+    width: 50px;
+    color: #8a38ad;
+}
+
+.table-dialog-info {
+    height: 200px;
+    text-align: center;
+    border-bottom: 1px solid #f58f4e;
+}
+
+.table-dialog-buttons {
+}
+
+.table-dialog-status-buttons {
+    width: 150px;
+    color: black;
+}
+
+.table-dialog-quick-action {
+    /*height: 150px;*/
+    /*width: 150px;*/
+    height: 100%;
+    width: 85%;
+}
+
+.table-dialog-div {
+    height: 400px;
+    width: 500px;
+    padding: 20px;
+    background-color: rgba(40, 44, 52, 0.11);
+}
+
 .App {
-  text-align: center;
+    text-align: center;
+
+    /*TODO Do not do this.*/
+    width: 99%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.table-card {
+    padding: 0 5px 5px 5px;
+    margin: auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.table-card-header-number {
+    font-size: 40px;
+    font-weight: 500;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.table-card-footer div:nth-last-child(n) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.table-card-footer div:nth-last-child(n) svg {
+    margin-right: 3px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.table-card-footer div:nth-last-child(-n+1) {
+    border-left: 1px solid black;
+}
+
+.card-title .container-fluid {
+    /*background-color: black;*/
+    justify-content: space-between;
+}
+
+.card-seat-num {
+    font-size: 15px;
+    text-align: end;
+}
+
+.table-card-status {
+    text-align: center;
+    font-weight: bold;
+}
+
+.card-title {
+    border-bottom: 1px solid #282c34;
+}
+
+.tables-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px 20px;
+    /*margin-top: 15px;*/
 }
