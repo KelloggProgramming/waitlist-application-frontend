@@ -26,7 +26,6 @@ function App() {
             <div className="background"/>
             <ThemeProvider theme={darkTheme}>
                 <CssBaseline/>
-                {/*<AllTableComponent/>*/}
                 <TablePage/>
             </ThemeProvider>
 

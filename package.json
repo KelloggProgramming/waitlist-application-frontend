@@ -6,7 +6,6 @@
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.1",
-    "@mui/lab": "^5.0.0-alpha.165",
     "@mui/material": "^5.15.1",
     "@reduxjs/toolkit": "^2.1.0",
     "@testing-library/jest-dom": "^5.17.0",
