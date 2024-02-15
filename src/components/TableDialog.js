@@ -4,6 +4,7 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import {TableStatus} from "../constants/TableStatus";
 import {useState} from "react";
 import TableService from "../services/TableService";
+import {calculateElapsedTimeFormatted} from "../utilities/TimeUtilities";
 
 export default function TableDialog(props) {
     const {onClose, table, open, refreshHook} = props;
@@ -25,8 +26,13 @@ export default function TableDialog(props) {
         // let newStatus = table.status === "AVAILABLE" ? "INUSE" : "AVAILABLE";
         //TODO Validation that passed in is a valid status
         if (status) {
-            TableService.updateStatus(table.id, status).then(res => {
-                if (res.status !== 200) {
+            TableService.updateStatus(table.id, status, (result) => {
+                if (result === null) {
+                    setLoading(false);
+                    return;
+                }
+
+                if (result.status !== 200) {
                     console.log("Error setting table " + table.tableNumber + " to " + status)
                 } else {
                     console.log("table " + table.tableNumber + " updated to " + status);
@@ -126,6 +132,8 @@ export default function TableDialog(props) {
                                 <Typography><b>Table #:</b> {table.tableNumber}</Typography>
                                 <Typography><b>Number of Seats:</b> {numberOfSeats()}</Typography>
                                 <Typography><b>Current Status:</b> {TableStatus[table.status].displayName}</Typography>
+                                <Typography><b>Time in Status:</b> {calculateElapsedTimeFormatted(table.statusUpdated)}
+                                </Typography>
                             </div>
                             <div style={{"width": "50%"}}>
                                 <Typography><b>Reservations</b></Typography>

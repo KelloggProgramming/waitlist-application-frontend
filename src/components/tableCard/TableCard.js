@@ -14,7 +14,7 @@ import {calculateElapsedTimeFormatted} from "../../utilities/TimeUtilities";
 
 
 export default function TableCard({table, refreshHook}) {
-    const [elapsedTime, setElapsedTime] = useState("--:--")
+    const [elapsedTime, setElapsedTime] = useState(calculateElapsedTimeFormatted(table.statusUpdated))
     const [open, setOpen] = useState(false)
 
     const handleClickOpen = () => {

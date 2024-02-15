@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 import TableService from "../services/TableService";
 import {Chip} from "@mui/material";
 import useInterval from "../utilities/UseInterval";
-import {disconnected} from "../services/apiSlice";
 import NavBar from "./NavBar";
 import {useDispatch} from "react-redux";
 
@@ -15,23 +14,30 @@ export default function TablePage() {
     const dispatch = useDispatch();
 
     const updateTablesList = () => {
-        TableService.getTables()
-            .then(res => res.json())
-            .then(jsonTables => {
-                jsonTables.sort((a, b) => a.tableNumber > b.tableNumber)
-                setTables(jsonTables)
-            }).catch(err => {
-            console.log("Error refreshing tables")
-            dispatch(disconnected())
+        TableService.getTables(response => {
+            if (!response) {
+                return;
+            }
+            response.json()
+                // .then(res => res.json())
+                .then(jsonTables => {
+                    jsonTables.sort((a, b) => a.tableNumber > b.tableNumber)
+                    setTables(jsonTables)
+                })
         })
     }
 
     const updateTablesTypesList = () => {
-        TableService.getTableTypes()
-            .then(res => res.json())
-            .then(jsonTableTypes => {
-                setTableTypes(jsonTableTypes)
-            })
+        TableService.getTableTypes(res => {
+            if (res === null) {
+                setTableTypes([]);
+                return;
+            }
+            res.json()
+                .then(jsonTableTypes => {
+                    setTableTypes(jsonTableTypes)
+                })
+        })
     }
 
 

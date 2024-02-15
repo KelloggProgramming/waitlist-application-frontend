@@ -1,6 +1,7 @@
 import {ConnectionStatus} from "../services/apiSlice";
 import WifiTetheringOffIcon from "@mui/icons-material/WifiTetheringOff";
 import WifiTetheringIcon from "@mui/icons-material/WifiTethering";
+import SyncIcon from '@mui/icons-material/Sync';
 import {useSelector} from "react-redux";
 
 export default function NavBar(props) {
@@ -10,10 +11,11 @@ export default function NavBar(props) {
 
     const connectionIcon = () => {
         if (apiConnectionStatus === ConnectionStatus.DISCONNECTED) {
-            return <WifiTetheringOffIcon style={{"color": "gold"}}/>
+            return <WifiTetheringOffIcon style={{"color": "darkred"}}/>
         } else if (apiConnectionStatus === ConnectionStatus.CONNECTED) {
-            return <WifiTetheringIcon/>
-
+            return <WifiTetheringIcon style={{"color": "#5e5e5e"}}/>
+        } else if (apiConnectionStatus === ConnectionStatus.CONNECTING) {
+            return <SyncIcon style={{"color": "gold"}}/>
         }
     }
 
