@@ -1,17 +1,14 @@
-import TableCardGrid from "./tableCardGrid/TableCardGrid";
+import TableCardGrid from "./TableCardGrid";
 import {useEffect, useState} from "react";
-import TableService from "../services/TableService";
+import TableService from "../../services/TableService";
 import {Chip} from "@mui/material";
-import useInterval from "../utilities/UseInterval";
-import NavBar from "./NavBar";
-import {useDispatch} from "react-redux";
+import useInterval from "../../utilities/UseInterval";
+import NavBar from "../common/NavBar";
 
 export default function TablePage() {
     const [tables, setTables] = useState([]);
     const [tableTypes, setTableTypes] = useState([]);
     const [selectedTableTypeId, setSelectedTableTypeId] = useState(null);
-
-    const dispatch = useDispatch();
 
     const updateTablesList = () => {
         TableService.getTables(response => {

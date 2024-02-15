@@ -1,7 +1,3 @@
-// export function getDisplayName(name) {
-//     return
-// }
-
 export const TableStatus = {
     'AVAILABLE': {
         name: 'AVAILABLE',

@@ -1,10 +1,10 @@
 import Dialog from "@mui/material/Dialog";
 import {Button, IconButton, LinearProgress, Typography} from "@mui/material";
 import Grid2 from "@mui/material/Unstable_Grid2";
-import {TableStatus} from "../constants/TableStatus";
+import {TableStatus} from "../../constants/TableStatus";
 import {useState} from "react";
-import TableService from "../services/TableService";
-import {calculateElapsedTimeFormatted} from "../utilities/TimeUtilities";
+import TableService from "../../services/TableService";
+import {calculateElapsedTimeFormatted} from "../../utilities/TimeUtilities";
 
 export default function TableDialog(props) {
     const {onClose, table, open, refreshHook} = props;

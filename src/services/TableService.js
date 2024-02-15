@@ -1,5 +1,5 @@
 import {connected, connecting, ConnectionStatus, disconnected} from "./apiSlice";
-import store from '../app/store'
+import store from '../store/store'
 
 // const API_URL = 'https://cafebelleepoque.com/api';
 // const API_URL = 'http://192.168.0.202:7363/api';
@@ -51,4 +51,6 @@ class TableService {
     }
 }
 
-export default new TableService();
+const tableService = new TableService();
+
+export default tableService;

@@ -1,5 +1,5 @@
 import './App.css';
-import TablePage from "./components/TablePage";
+import TablePage from "./components/tables/TablePage";
 import {alpha, createTheme, CssBaseline, getContrastRatio, ThemeProvider} from "@mui/material";
 
 

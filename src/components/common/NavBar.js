@@ -1,4 +1,4 @@
-import {ConnectionStatus} from "../services/apiSlice";
+import {ConnectionStatus} from "../../services/apiSlice";
 import WifiTetheringOffIcon from "@mui/icons-material/WifiTetheringOff";
 import WifiTetheringIcon from "@mui/icons-material/WifiTethering";
 import SyncIcon from '@mui/icons-material/Sync';

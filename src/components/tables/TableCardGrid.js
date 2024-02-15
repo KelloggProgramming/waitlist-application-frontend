@@ -1,4 +1,4 @@
-import TableCard from "../tableCard/TableCard";
+import TableCard from "./TableCard";
 import Grid2 from "@mui/material/Unstable_Grid2";
 
 export default function TableCardGrid(props) {

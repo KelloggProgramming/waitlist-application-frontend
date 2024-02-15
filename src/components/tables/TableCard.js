@@ -2,7 +2,7 @@ import {Card, CardContent, Typography} from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import useInterval from "../../utilities/UseInterval";
 import {useState} from "react";
-import TableDialog from "../TableDialog";
+import TableDialog from "./TableDialog";
 
 import PersonIcon from '@mui/icons-material/Person';
 import LockClockIcon from '@mui/icons-material/LockClock';
