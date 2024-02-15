@@ -1,7 +1,8 @@
 import './App.css';
 import TablePage from "./components/tables/TablePage";
 import {alpha, createTheme, CssBaseline, getContrastRatio, ThemeProvider} from "@mui/material";
-
+import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
+import {LocalizationProvider} from "@mui/x-date-pickers";
 
 function App() {
 
@@ -24,11 +25,12 @@ function App() {
     return (
         <div className="App">
             <div className="background"/>
-            <ThemeProvider theme={darkTheme}>
-                <CssBaseline/>
-                <TablePage/>
-            </ThemeProvider>
-
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <ThemeProvider theme={darkTheme}>
+                    <CssBaseline/>
+                    <TablePage/>
+                </ThemeProvider>
+            </LocalizationProvider>
         </div>
     );
 }

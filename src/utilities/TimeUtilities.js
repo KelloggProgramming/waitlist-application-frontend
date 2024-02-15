@@ -1,6 +1,13 @@
+import dayjs from "dayjs";
+
+export function roundToNearestMinutes(minutes, d = dayjs()) {
+    let ms = 1000 * 60 * minutes;
+    return dayjs(Math.round(d.millisecond() / ms) * ms)
+}
+
 export function calculateElapsedTimeFormatted(dateTime) {
     //TODO: make API return TZ offset
-    
+
     if (dateTime === null) {
         return "--:--"
     }

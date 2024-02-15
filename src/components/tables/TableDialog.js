@@ -4,7 +4,8 @@ import Grid2 from "@mui/material/Unstable_Grid2";
 import {TableStatus} from "../../constants/TableStatus";
 import {useState} from "react";
 import TableService from "../../services/TableService";
-import {calculateElapsedTimeFormatted} from "../../utilities/TimeUtilities";
+import {calculateElapsedTimeFormatted, roundToNearestMinutes} from "../../utilities/TimeUtilities";
+import {MobileTimePicker} from "@mui/x-date-pickers";
 
 export default function TableDialog(props) {
     const {onClose, table, open, refreshHook} = props;
@@ -137,6 +138,8 @@ export default function TableDialog(props) {
                             <div style={{"width": "50%"}}>
                                 <Typography><b>Reservations</b></Typography>
                                 <Typography>{nextReservation()}</Typography>
+                                <MobileTimePicker minutesStep={5} defaultValue={roundToNearestMinutes(5)}/>
+
                             </div>
                         </div>
                     </Grid2>
