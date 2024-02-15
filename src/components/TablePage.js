@@ -58,7 +58,7 @@ export default function TablePage() {
         }
     }
 
-    const filterChips = () => {
+    const navBarFilterChips = () => {
         if (tableTypes && tableTypes.length > 0) {
             const resetType = {
                 id: null,
@@ -89,7 +89,7 @@ export default function TablePage() {
 
     return (
         <>
-            <NavBar pageContent={filterChips}/>
+            <NavBar pageContent={navBarFilterChips}/>
             <TableCardGrid tables={filterTables()} refreshHook={updateTablesList}/>
         </>
     );

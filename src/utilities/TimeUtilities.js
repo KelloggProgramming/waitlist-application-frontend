@@ -1,6 +1,6 @@
 export function calculateElapsedTimeFormatted(dateTime) {
     //TODO: make API return TZ offset
-    //TODO ERROR HANDLE
+    
     if (dateTime === null) {
         return "--:--"
     }

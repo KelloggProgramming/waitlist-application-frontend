@@ -23,7 +23,6 @@ export default function TableDialog(props) {
     }
 
     const changeTableStatus = (status) => {
-        // let newStatus = table.status === "AVAILABLE" ? "INUSE" : "AVAILABLE";
         //TODO Validation that passed in is a valid status
         if (status) {
             TableService.updateStatus(table.id, status, (result) => {
